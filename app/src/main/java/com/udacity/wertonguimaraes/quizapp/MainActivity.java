@@ -10,11 +10,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
-
+    private final int TOTAL_MAX_POINTS = 3;
     private final Integer CORRECT_ANSWER_QUESTION1 = R.id.answer_amsterdam;
     private final Integer[] CORRECT_ANSWER_QUESTION3 = {R.id.answer_cedric, R.id.answer_dobby, R.id.answer_malfoy};
 
@@ -41,9 +42,6 @@ public class MainActivity extends AppCompatActivity {
         correct_answer_question2 = (TextView) findViewById(R.id.correct_answer_total_oscar);
         correct_answer_question2.setVisibility(View.GONE);
 
-        mPoints = (TextView) findViewById(R.id.points);
-        mPoints.setVisibility(View.GONE);
-
         mCheckAnswers = (Button) findViewById(R.id.check_answers);
 
     }
@@ -66,40 +64,37 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void mCheckAnswers() {
-        double[] pointsByQuestion = {mCheckQuestion1(), mCheckQuestion2(), mCheckQuestion3()};
+        int[] pointsByQuestion = {mCheckQuestion1(), mCheckQuestion2(), mCheckQuestion3()};
 
-        String updatedPoints = getResources().getText(R.string.points) + String.valueOf(sumPoints(pointsByQuestion));
-        mPoints.setText(updatedPoints);
-        mPoints.setVisibility(View.VISIBLE);
-
+        showScoreMessage(sumPoints(pointsByQuestion));
     }
 
-    private double sumPoints(double[] pointsByQuestion){
-        double sum = 0;
+    private int sumPoints(int[] pointsByQuestion){
+        int sum = 0;
 
-        for (double i : pointsByQuestion)
+        for (int i : pointsByQuestion)
             sum += i;
 
         return sum;
     }
 
-    private double mCheckQuestion1() {
-        double points = 0.0;
+    private int mCheckQuestion1() {
+        int points = 0;
         RadioGroup rg = (RadioGroup) findViewById(R.id.radio_group_question1);
 
         if (rg.getCheckedRadioButtonId() == CORRECT_ANSWER_QUESTION1) {
-            points = 1.0;
+            points = 1;
         }
 
         correct_answer_question1.setTextColor(Color.parseColor(getString(Integer.parseInt(String.valueOf(R.color.green)))));
         return points;
     }
 
-    private double mCheckQuestion2() {
-        double points = 0.0;
+    private int mCheckQuestion2() {
+        int points = 0;
 
         if (answer_question2.getText().toString().equals("11")) {
-            points = 1.0;
+            points = 1;
         }
 
         correct_answer_question2.setTextColor(Color.parseColor(getString(Integer.parseInt(String.valueOf(R.color.green)))));
@@ -107,35 +102,55 @@ public class MainActivity extends AppCompatActivity {
         return points;
     }
 
-    private double mCheckQuestion3() {
+    private int mCheckQuestion3() {
         Integer[] check_box_ids = {R.id.answer_cedric, R.id.answer_malfoy, R.id.answer_dobby,
         R.id.answer_jerry, R.id.answer_tk};
 
-        double total_point = 0.0;
-        for (Integer id: check_box_ids) {
-            total_point += mCheckCheckBox(id);
-        }
-
-        return total_point;
+        return check_all_checkboxs(check_box_ids, CORRECT_ANSWER_QUESTION3);
     }
 
-    private double mCheckCheckBox(int checkbox_id) {
-        double points = 0.0;
+    private int check_all_checkboxs(Integer[] check_box_ids, Integer[] correct_answers){
+        double total_point = 0;
+        for (Integer id: check_box_ids) {
+            if (mCheckCheckBox(id, correct_answers) == 1) {
+                total_point += 0.2;
+            }
+        }
+        return (int) total_point;
+    }
+
+    private int mCheckCheckBox(int checkbox_id, Integer[] correct_answers) {
+        int points = 1;
         CheckBox cb = (CheckBox) findViewById(checkbox_id);
 
 
-        if ((cb.isChecked() && Arrays.asList(CORRECT_ANSWER_QUESTION3).contains(checkbox_id)) ||
-                !cb.isChecked() && !Arrays.asList(CORRECT_ANSWER_QUESTION3).contains(checkbox_id)) {
-            points = 0.2;
+        if ((cb.isChecked() && !Arrays.asList(correct_answers).contains(checkbox_id)) ||
+                !cb.isChecked() && Arrays.asList(correct_answers).contains(checkbox_id)) {
+            points = 0;
         }
 
-        if (Arrays.asList(CORRECT_ANSWER_QUESTION3).contains(checkbox_id)){
+        if (Arrays.asList(correct_answers).contains(checkbox_id)){
             cb.setTextColor(Color.parseColor(getString(Integer.parseInt(String.valueOf(R.color.green)))));
         }
-
 
         return points;
     }
 
+    private void showScoreMessage(int total_score){
+        String message;
+        if (total_score == TOTAL_MAX_POINTS) {
+            message = getResources().getString(R.string.message_all_answer_is_right);
+        } else if (total_score == 0) {
+            message = getResources().getString(R.string.message_all_answer_is_wrong);
+        } else if (total_score == 1) {
+            message = getResources().getString(R.string.message_answer_one_question_right);
+        } else {
+            message = getResources().getString(R.string.message_answer_any_questions_right);
+            message = message.replace("{}", String.valueOf(total_score));
+        }
+
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
+    }
 
 }

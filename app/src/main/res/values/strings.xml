@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">QuizApp</string>
-    <string name="points">Points: </string>
 
+    <string name="message_all_answer_is_right">Congratulations, you hit all the questions.</string>
+    <string name="message_all_answer_is_wrong">You did not hit any questions.</string>
+    <string name="message_answer_one_question_right">You got 1 question.</string>
+    <string name="message_answer_any_questions_right">You got {} questions.</string>
 
     <string name="question1">1. In which European city can you find the home of Anne Frank?</string>
     <string name="amsterdam">Amsterdam</string>
@@ -17,4 +20,6 @@
     <string name="jerry">Jerry</string>
     <string name="tk">Takeru Takaishi</string>
     <string name="malfoy">Draco Malfoy</string>
+
+    <string name="submit">Submit Answers</string>
 </resources>
