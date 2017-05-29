@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.udacity.wertonguimaraes.quizapp.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include layout="@layout/question1" />
+        <include layout="@layout/space_with_line" />
+        <include layout="@layout/question2" />
+        <include layout="@layout/space_with_line" />
+        <include layout="@layout/question3" />
+        <include layout="@layout/space_with_line" />
+
+        <Button
+            android:id="@+id/check_answers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/points"/>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

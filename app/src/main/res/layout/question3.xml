@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.udacity.wertonguimaraes.quizapp.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question3"
+        android:gravity="start"
+        android:textSize="17sp"/>
+
+    <CheckBox
+        android:id="@+id/answer_cedric"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cedric" />
+
+    <CheckBox
+        android:id="@+id/answer_dobby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dobby" />
+
+    <CheckBox
+        android:id="@+id/answer_tk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tk" />
+
+    <CheckBox
+        android:id="@+id/answer_malfoy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/malfoy" />
+
+    <CheckBox
+        android:id="@+id/answer_jerry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jerry" />
+
+</LinearLayout>
