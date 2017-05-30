@@ -4,7 +4,7 @@
     <string name="message_all_answer_is_right">Congratulations, you hit all the questions.</string>
     <string name="message_all_answer_is_wrong">You did not hit any questions.</string>
     <string name="message_answer_one_question_right">You got 1 question.</string>
-    <string name="message_answer_any_questions_right">You got {} questions.</string>
+    <string name="message_answer_any_questions_right">You got %s questions.</string>
 
     <string name="question1">1. In which European city can you find the home of Anne Frank?</string>
     <string name="amsterdam">Amsterdam</string>
@@ -12,14 +12,17 @@
     <string name="london">London</string>
 
     <string name="question2">2. How many oscars did the Titanic movie got?</string>
-    <string name="answer_question2">R. 11</string>
+    <string name="answer_question2">11</string>
 
-    <string name="question3">3. What are the characters of Harry Potter??</string>
+    <string name="question3">3. What are the characters of Harry Potter?</string>
     <string name="dobby">Dobby</string>
     <string name="cedric">Cedric Diggory</string>
     <string name="jerry">Jerry</string>
     <string name="tk">Takeru Takaishi</string>
     <string name="malfoy">Draco Malfoy</string>
+
+    <string name="question4">4. How do you say AIDS in French?</string>
+    <string name="answer_question4">Sida</string>
 
     <string name="submit">Submit Answers</string>
 </resources>

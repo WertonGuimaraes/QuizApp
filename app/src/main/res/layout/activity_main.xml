@@ -17,6 +17,8 @@
         <include layout="@layout/space_with_line" />
         <include layout="@layout/question3" />
         <include layout="@layout/space_with_line" />
+        <include layout="@layout/question4" />
+        <include layout="@layout/space_with_line" />
 
         <Button
             android:id="@+id/check_answers"
